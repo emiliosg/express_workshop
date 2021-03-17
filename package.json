@@ -1,19 +1,27 @@
 {
   "name": "express-workshop",
   "version": "1.0.0",
-  "description": "For the second activity Hello World",
+  "description": "This is a project for the node.js workshop",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository":{
+	  "type":"git",
+	  "url":"git+https://github.com/emiliosg/express_workshop.git"
   },
   "keywords": [
     "api",
     "rest",
     "express",
-    "nodejs"
+    "nodejs",
+    "jwt",
+    "mysql"
   ],
   "author": "emiliosg",
   "license": "ISC",
+  "bugs":{"url":"https://github.com/emiliosg/express_workshop/issues"},
+  "homepage":"https://github.com/emiliosg/express_workshop#readme",
   "dependencies": {
     "express": "^4.17.1"
   }
