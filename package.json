@@ -4,11 +4,12 @@
   "description": "This is a project for the node.js workshop",
   "main": "index.js",
   "scripts": {
+    "start": "nodemon index",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "repository":{
-	  "type":"git",
-	  "url":"git+https://github.com/emiliosg/express_workshop.git"
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/emiliosg/express_workshop.git"
   },
   "keywords": [
     "api",
@@ -20,9 +21,14 @@
   ],
   "author": "emiliosg",
   "license": "ISC",
-  "bugs":{"url":"https://github.com/emiliosg/express_workshop/issues"},
-  "homepage":"https://github.com/emiliosg/express_workshop#readme",
+  "bugs": {
+    "url": "https://github.com/emiliosg/express_workshop/issues"
+  },
+  "homepage": "https://github.com/emiliosg/express_workshop#readme",
   "dependencies": {
     "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.7"
   }
 }

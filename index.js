@@ -1,40 +1,45 @@
 const express = require('express');
 const app = express();
 const {pokemon} = require('./pokedex.json');
+const bodyParser =  require('body-parser');
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+
 app.get("/",(req, res, next) => {
 	res.send("Bienvenido al pokedex");
 });
 
-app.get("/pokemon/all",(req,res,next) => {
-	res.status(200);
-	res.send(pokemon);
+app.post("/pokemon",(req, res, next) => {
+	return res.status(200).send(req.body);
+});
+app.get("/pokemon",(req,res,next) => {
+	res.status(200).send(pokemon);
+});
+app.post("/pokemon",(req, res, next) =>{
+	return res.status(200).send("Estas en pokemon POST");
 });
 
 app.get("/pokemon/:id([0-9]{1,3})",(req,res,next) => {
 	const id = req.params.id -1;
-	if(id >= 0 && id <= 150){
-		res.status(200);
-		res.send(pokemon[req.params.id - 1]);
-	}
-	else
+	if(id >= 0 && id <= 150)
 	{
-		res.status(404);
-		res.send("Pokemon no encontrado");
+		return res.status(200).send(pokemon[req.params.id - 1]);
 	}
+	return res.status(404).send("Pokemon no encontrado");
 });
 
-app.get("/pokemon/:name",(req,res,next) => {
+app.get("/pokemon/:name([A-Za-z]+)",(req,res,next) => {
 	const name = req.params.name;
-	for (i=0; i<pokemon.length;i++)
-	{
-		if(pokemon[i].name == name)
-		{
-			res.status(200);
-			res.send(pokemon[i]);
-		}
+	const pk  = pokemon.filter((p) => {
+		return (p.name.toUpperCase() == name.toUpperCase()) && p;
+	});
+	if(pk.length > 0) {
+		return res.status(200).send(pk);
 	}
-	res.status(404);
-	res.send("Pokemon no encontrado");
+	return res.status(404).send("Pokemon no encontrado");
+jkjkdsf
+
 });
 
 app.listen(process.env.PORT || 3000,() => {
