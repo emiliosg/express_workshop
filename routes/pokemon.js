@@ -1,6 +1,5 @@
 const express = require('express');
 const pokemon = express.Router();
-
 const db = require('../config/database');
 
 pokemon.post("/",async (req, res, next) => {
